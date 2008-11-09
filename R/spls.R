@@ -3,7 +3,7 @@
 
 "spls" <-
 function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
-        scale=TRUE, center=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100 )
+        scale.x=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100 )
 {
     # always required to input: x, y, K, plsmethod
     # x: matrix
@@ -13,8 +13,7 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
     # kappa: if y multivariate; 0<kappa<=0.5
     # select: "simpls" (update X) or "pls2" (update Y)
     # fit: "simpls" or "kernelpls" or "widekernelpls" or "oscorespls"
-    # scale: scale x?
-    # center: center x?
+    # scale.x: scale x?
     # scale.y: scale y?
     # eps: if y multivariate; criterion to determine whether a=c
     # maxstep: if y multivariate; force finish each iteration
@@ -31,17 +30,14 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
     q <- ncol(y)
     one <- matrix(1,1,n)
     
-    # center y & normalize x
+    # center & scale y & x
     
     mu <- one %*% y / n
+    y <- scale( y, drop(mu), FALSE )
+    meanx <- drop( one %*% x ) / n
+    x <- scale( x, meanx, FALSE )  
     
-    if ( center )
-    {
-        meanx <- drop( one %*% x ) / n
-        x <- scale( x, meanx, FALSE )        
-    } else { meanx <- rep( 0, p ) }
-    
-    if ( scale )
+    if ( scale.x )
     {
         normx <- sqrt( drop( one %*% (x^2) ) / (n-1) )
         if ( any( normx < .Machine$double.eps ) ) 
@@ -63,7 +59,6 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
     betamat <- list()
     x1 <- x
     y1 <- y
-    wpre <- matrix( 0, p, 1 )
     
     type <- correctp( x, y, eta, K, kappa, select, fit )
     eta <- type$eta
@@ -90,7 +85,8 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
         # fit pls with predictors in A
         
         xA <- x[,A]
-        plsfit <- plsr( y~xA, ncomp=min(k,length(A)), method=fit )
+        plsfit <- plsr( y~xA, ncomp=min(k,length(A)),
+                    method=fit, scale=FALSE )
         
         # update
         

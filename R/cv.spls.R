@@ -4,7 +4,7 @@
 "cv.spls" <-
 function( x, y, fold=10, K, eta, kappa=0.5,
         select="pls2", fit="simpls",
-        scale=TRUE, center=TRUE, scale.y=FALSE )
+        scale.x=TRUE, scale.y=FALSE )
 {
     # initialization
     
@@ -47,7 +47,7 @@ function( x, y, fold=10, K, eta, kappa=0.5,
             omit <- foldi[[j]]
             object <- spls( x[-omit,], y[-omit,], eta=eta[i], kappa=kappa,
                         K=max(K), select=select, fit=fit,
-                        scale=scale, center=center, scale.y=scale.y )
+                        scale.x=scale.x, scale.y=scale.y )
             newx <- x[omit,]
             newx <- scale( newx, object$meanx, object$normx )
             betamat <- object$betamat

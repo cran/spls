@@ -45,7 +45,7 @@ function( x, y, eta, kappa, eps, maxstep )
             c <- matrix( 10, p, 1 )
             c.old <- c
                 
-            while ( dis>sqrt(eps) & i<=maxstep )
+            while ( dis>eps & i<=maxstep )
             {
                 # optimize a for fixed c
                             

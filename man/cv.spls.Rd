@@ -10,7 +10,7 @@
 \usage{
 cv.spls( x, y, fold=10, K, eta, kappa=0.5,
         select="pls2", fit="simpls",
-        scale=TRUE, center=TRUE, scale.y=FALSE )
+        scale.x=TRUE, scale.y=FALSE )
 }
 \arguments{
   \item{x}{ Matrix of predictors. }
@@ -30,9 +30,8 @@ cv.spls( x, y, fold=10, K, eta, kappa=0.5,
                     \code{"kernelpls"}, \code{"widekernelpls"},
                     \code{"simpls"}, or \code{"oscorespls"}.
                     Default is \code{"simpls"}.}
-  \item{scale}{ Scale the predictors by dividing each predictor variable
+  \item{scale.x}{ Scale the predictors by dividing each predictor variable
                 by its sample standard deviation? }
-  \item{center}{ Center the predictors? }
   \item{scale.y}{ Scale the responses by dividing each response variable
                 by its sample standard deviation? }
 }

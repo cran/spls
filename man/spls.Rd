@@ -6,7 +6,7 @@
 }
 \usage{
 spls( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
-    scale=TRUE, center=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100)
+    scale.x=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100)
 }
 \arguments{
   \item{x}{ Matrix of predictors. }
@@ -25,9 +25,8 @@ spls( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
                     \code{"kernelpls"}, \code{"widekernelpls"},
                     \code{"simpls"}, or \code{"oscorespls"}.
                     Default is \code{"simpls"}.}
-  \item{scale}{ Scale the predictors by dividing each predictor variable
+  \item{scale.x}{ Scale the predictors by dividing each predictor variable
                 by its sample standard deviation? }
-  \item{center}{ Center the predictors? }
   \item{scale.y}{ Scale the responses by dividing each response variable
                 by its sample standard deviation? }
   \item{eps}{ An effective zero. Default is 1e-4. }
