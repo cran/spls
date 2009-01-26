@@ -20,7 +20,7 @@ function( x, yvar=c(1:ncol(x$y)), ... )
         betamatq <- c()
         for ( j in Ks )
         {
-            betamatq <- cbind( betamatq, betamat[[j]][,i] )
+            betamatq <- cbind( betamatq, betamat[[j]][,yvar[i]] )
         }
         ylimit <- c( min(betamatq), max(betamatq) )        
         main.name <- paste('Coefficient Path Plot (eta=',eta,')',sep='')        

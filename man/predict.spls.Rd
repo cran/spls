@@ -26,6 +26,9 @@ Make predictions or extract coefficients from a fitted SPLS object.
     \item{...}{ Any arguments for \code{predict.spls}
                 should work for \code{coef.spls}. }
 }
+\details{
+Users can input either only selected variables or all variables for \code{newx}.
+}
 \value{Matrix of coefficient estimates if \code{type="coefficient"}.
 Matrix of predicted responses if \code{type="fit"}.}
 \references{
@@ -33,7 +36,7 @@ Chun, H. and Keles, S. (2007). "Sparse partial least squares
   for simultaneous dimension reduction and variable selection",
 (\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
-\seealso{ plot and print methods for spls. }
+\seealso{ \code{\link{plot.spls}} and \code{\link{print.spls}}. }
 \examples{
 data(yeast)
 # SPLS with eta=0.7 & 8 latent components

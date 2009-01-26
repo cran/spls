@@ -6,7 +6,7 @@
 }
 \usage{
 spls( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
-    scale.x=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100)
+    scale.x=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100, trace=FALSE)
 }
 \arguments{
   \item{x}{ Matrix of predictors. }
@@ -32,6 +32,7 @@ spls( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
   \item{eps}{ An effective zero. Default is 1e-4. }
   \item{maxstep}{ Maximum number of iterations when fitting direction vectors.
                     Default is 100. }
+  \item{trace}{ Print out the progress of the variable selection? }
 }
 \details{
 The SPLS method is described in detail in Chun and Keles (2007).
@@ -51,7 +52,8 @@ Chun, H. and Keles, S. (2007). "Sparse partial least squares
   for simultaneous dimension reduction and variable selection",
 (\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
-\seealso{ print, plot, predict, coef, ci.spls, coefplot.spls methods for spls. }
+\seealso{ \code{\link{print.spls}}, \code{\link{plot.spls}}, \code{\link{predict.spls}},
+\code{\link{coef.spls}}, \code{\link{ci.spls}}, and \code{\link{coefplot.spls}}. }
 \examples{
 data(yeast)
 # SPLS with eta=0.7 & 8 hidden components

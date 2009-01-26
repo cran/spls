@@ -27,7 +27,7 @@ Chun, H. and Keles, S. (2007). "Sparse partial least squares
   for simultaneous dimension reduction and variable selection",
 (\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
-\seealso{ ci.spls. }
+\seealso{ \code{\link{ci.spls}}. }
 \examples{
 data(mice)
 # SPLS with eta=0.6 & 1 latent components

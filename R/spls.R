@@ -3,7 +3,7 @@
 
 "spls" <-
 function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
-        scale.x=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100 )
+        scale.x=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100, trace=FALSE )
 {
     # always required to input: x, y, K, plsmethod
     # x: matrix
@@ -69,11 +69,15 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
     
     # main iteration
     
+    if ( is.null(colnames(x)) )
+    { xnames <- c(1:p) } else { xnames <- colnames(x) }    
+    
+    new2As <- list()    
+    if ( trace )
+    { cat("The variables that join the set of selected variables at each step:\n") }
+    
     for (k in 1:K)
-    {
-        if ( q>1 & kappa<0.5 & p>20 )
-        { print( paste("constructing the direction vector",k) ) }
-        
+    {        
         # fit direction vector
         
         what <- spls.dv( x1, y1, eta, kappa, eps, maxstep )
@@ -81,6 +85,7 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
         # construct A
         
         A <- unique( ip[ what!=0 | betahat[,1]!=0 ] )
+        new2A <- ip[ what!=0 & betahat[,1]==0 ]
         
         # fit pls with predictors in A
         
@@ -93,16 +98,42 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
         betahat <- matrix( 0, p, q )
         betahat[A,] <- matrix( coef(plsfit), length(A), q )
         betamat[[k]] <- betahat # for cv.spls
+        pj <- plsfit$projection
+        
         if ( select=="pls2" )
         {
             y1 <- y - x %*% betahat
         }
         if ( select=="simpls" )
-        {
-            pj <- plsfit$projection
+        {            
             pw <- pj %*% solve( t(pj) %*% pj ) %*% t(pj)
             x1 <- x
             x1[,A] <- x[,A] - x[,A] %*% pw
+        }
+        
+        # print out variables that join the active set
+        
+        if ( trace )
+        {
+            if ( length(new2A)<=10 )
+            {
+                cat( paste("- ",k,"th step (K=",k,"):\n",sep="") )
+                cat( xnames[new2A] )
+                cat( "\n" )
+            } else
+            {
+                cat( paste("- ",k,"th step (K=",k,"):\n",sep="") )
+                nlines <- ceiling(length(new2A)/10)
+                for ( i in 0:(nlines-2) )
+                {
+                    cat( xnames[new2A[(10*i+1):(10*(i+1))]] )
+                    cat( "\n" )
+                }
+                cat( xnames[new2A[(10*(nlines-1)+1):length(new2A)]] )
+                cat( "\n" )        
+            }
+            
+            new2As[[k]] <- new2A
         }
     }
     
@@ -111,9 +142,10 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
     if ( !is.null(colnames(x)) ) { rownames(betahat) <- colnames(x) }
     if ( q>1 & !is.null(colnames(y)) ) { colnames(betahat) <- colnames(y) }
     
-    object <- list( x=x, y=y, betahat=betahat, A=A, betamat=betamat,
+    object <- list( x=x, y=y, betahat=betahat, A=A, betamat=betamat, new2As=new2As,
                     mu=mu, meanx=meanx, normx=normx, normy=normy,
-                    eta=eta, K=K, kappa=kappa, select=select, fit=fit )
+                    eta=eta, K=K, kappa=kappa, select=select, fit=fit,
+                    projection=pj )
     class(object) <- "spls"
     object
 }

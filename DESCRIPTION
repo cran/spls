@@ -1,6 +1,6 @@
 Package: spls
-Version: 1.0-2
-Date: 2008-11-11
+Version: 1.0-3
+Date: 2009-01-26
 Title: Sparse Partial Least Squares (SPLS) Regression
 Author: Dongjun Chung <chungdon@stat.wisc.edu>, Hyonho Chun <chun@stat.wisc.edu>, Sunduz Keles <keles@stat.wisc.edu>
 Maintainer: Dongjun Chung <chungdon@stat.wisc.edu>
@@ -8,4 +8,4 @@ Depends: pls
 Description: This package provides functions for fitting a Sparse Partial Least Squares Regression
 License: GPL (>= 2)
 URL: http://www.stat.wisc.edu/~chungdon/spls/
-Packaged: Tue Nov 11 16:04:54 2008; chungdon
+Packaged: Mon Jan 26 01:33:14 2009; chungdon

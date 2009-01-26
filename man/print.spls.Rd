@@ -17,7 +17,8 @@ Chun, H. and Keles, S. (2007). "Sparse partial least squares
   for simultaneous dimension reduction and variable selection"
 (\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
-\seealso{ plot, predict, and coef methods for spls. }
+\seealso{ \code{\link{plot.spls}}, \code{\link{predict.spls}},
+and \code{\link{coef.spls}}. }
 \examples{
 data(yeast)
 # SPLS with eta=0.7 & 8 hidden components

@@ -40,15 +40,16 @@ Invisibly returns a list with components:
   \item{mspemat}{ Matrix of the cross-validated mean squared prediction error.
                 Rows correspond to \code{eta} and
                 columns correspond to the number of components (\code{K}). }
-  \item{etaopt}{ Optimal \code{eta}. }
-  \item{Kopt}{ Optimal \code{K}. }
+  \item{eta.opt}{ Optimal \code{eta}. }
+  \item{K.opt}{ Optimal \code{K}. }
 }
 \references{
 Chun, H. and Keles, S. (2007). "Sparse partial least squares
   for simultaneous dimension reduction and variable selection",
 (\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
-\seealso{ print, plot, predict, and coef methods for spls. }
+\seealso{ \code{\link{print.spls}}, \code{\link{plot.spls}}, \code{\link{predict.spls}},
+and \code{\link{coef.spls}}. }
 \examples{
 data(yeast)
 set.seed(1)
@@ -56,8 +57,9 @@ set.seed(1)
 # the number of hidden components is searched between 1 and 10
 cv <- cv.spls( yeast$x, yeast$y, K = c(1:10), eta = seq(0.1,0.9,0.1) )
 # Optimal eta and K
-cv$etaopt
-cv$Kopt
+cv$eta.opt
+cv$K.opt
+(spls( yeast$x, yeast$y, eta=cv$eta.opt, K=cv$K.opt ))
 }
 \keyword{regression}
 \keyword{multivariate}

@@ -17,13 +17,13 @@ function( x, ... )
     
     if ( q == 1 )
     {
-        cat( "\nSparse Partial Least Squares for the univariate response\n" )
+        cat( "\nSparse Partial Least Squares for an univariate response\n" )
         cat( "----\n")
         cat( paste("Parameters: eta = ",eta,", K = ",K,"\n",sep="") )
     }
     if ( q > 1 )
     {
-        cat( "\nSparse Partial Least Squares for the multivariate responses\n" )
+        cat( "\nSparse Partial Least Squares for multivariate responses\n" )
         cat( "----\n")
         cat( paste("Parameters: eta = ",eta,", K = ",K,", kappa = ",kappa,"\n",sep="") )
     }

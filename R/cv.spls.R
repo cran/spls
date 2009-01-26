@@ -47,7 +47,7 @@ function( x, y, fold=10, K, eta, kappa=0.5,
             omit <- foldi[[j]]
             object <- spls( x[-omit,], y[-omit,], eta=eta[i], kappa=kappa,
                         K=max(K), select=select, fit=fit,
-                        scale.x=scale.x, scale.y=scale.y )
+                        scale.x=scale.x, scale.y=scale.y, trace=FALSE )
             newx <- x[omit,]
             newx <- scale( newx, object$meanx, object$normx )
             betamat <- object$betamat
@@ -70,11 +70,11 @@ function( x, y, fold=10, K, eta, kappa=0.5,
     colnames(mspemat) <- K
     mspecol <- apply( mspemat, 2, min)
     msperow <- apply( mspemat, 1, min)
-    Kopt <- min( K[mspecol==minpmse] )
-    etaopt <- max( eta[msperow==minpmse] )
+    K.opt <- min( K[mspecol==minpmse] )
+    eta.opt <- max( eta[msperow==minpmse] )
     
-    cat( paste('\nOptimal parameter: eta = ',etaopt,', ',sep='') )
-    cat( paste('K = ',Kopt,'\n',sep='') )
+    cat( paste('\nOptimal parameters: eta = ',eta.opt,', ',sep='') )
+    cat( paste('K = ',K.opt,'\n',sep='') )
     
     # plot heatmap & return values
             
@@ -82,6 +82,6 @@ function( x, y, fold=10, K, eta, kappa=0.5,
     rownames(mspemat) <- paste('eta=',eta)
     colnames(mspemat) <- paste('K =',K)
     
-    cv <- list( mspemat=mspemat, etaopt=etaopt, Kopt=Kopt )
+    cv <- list( mspemat=mspemat, eta.opt=eta.opt, K.opt=K.opt )
     invisible(cv)
 }

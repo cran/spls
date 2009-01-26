@@ -76,7 +76,7 @@ function( x, y, eta, kappa, eps, maxstep )
             c <- matrix( 10, p, 1 )
             c.old <- c 
             
-            # define functino for Lagrange part
+            # define function for Lagrange part
             
             h <- function(lambda)
             {

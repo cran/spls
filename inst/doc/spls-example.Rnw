@@ -31,7 +31,7 @@ pdftitle={spls Vignette}]
 
 \date{\today}
 
-\SweaveOpts{engine=R, echo=TRUE, pdf=TRUE, eps=FALSE}
+\SweaveOpts{engine=R, echo=TRUE, pdf=TRUE}
 
 \begin{document}
 %\VignetteIndexEntry{Sparse PLS}
@@ -40,6 +40,7 @@ pdftitle={spls Vignette}]
 \maketitle
 
 \section{Overview}
+
 This vignette provides basic information about the
 '\texttt{spls}' package. SPLS stands for ''Sparse Partial Least Squares''.
 The  SPLS regression methodology is developed in \cite{spls}. The main principle of this methodology is
@@ -60,7 +61,6 @@ library("spls")
 @
 
 \section{Input Data}
-
 
 The package requires that the response is given in the form of a either vector or matrix, and
 the predictors in the form of a matrix. The response can be either univariate or multivariate.
@@ -104,7 +104,7 @@ with the following command:
 
 <<plot1,eval=FALSE>>=
 set.seed(1)
-cv.spls( yeast$x, yeast$y, eta = seq(0.1,0.9,0.1), K = c(5:10) )
+cv <- cv.spls( yeast$x, yeast$y, eta = seq(0.1,0.9,0.1), K = c(5:10) )
 @
 
 '\texttt{cv.spls}' returns a heatmap-type plot of mean squared prediction error (MSPE)
@@ -122,7 +122,9 @@ and '\texttt{cv.spls}' recommends to use '\texttt{eta}=0.7' and '\texttt{K}=8'.
 
 \section{\texttt{SPLS} Fit}
 Using the parameters obtained from '\texttt{cv.spls}', \texttt{SPLS} can be fitted
-by the function '\texttt{spls}'. '\texttt{print.spls}' displays
+by the function '\texttt{spls}'. '\texttt{spls}' also prints out the variables
+that join the set of selected variables at each iteration step of SPLS fit.
+'\texttt{print.spls}' displays
 the parameters used, the number of selected predictors, and the list of the
 selected predictors. '\texttt{coef.spls}' prints out the coefficient estimates of SPLS fits.
 
@@ -131,6 +133,13 @@ f <- spls( yeast$x, yeast$y, eta = 0.7, K = 8 )
 print(f)
 coef.f <- coef(f)
 coef.f[1:5,1:5]
+@
+
+Note that you can obtain exactly the same SPLS fit
+using the object obtained from '\texttt{cv.spls}' as follows.
+
+<<spls-fn2,eval=FALSE>>=
+f <- spls( yeast$x, yeast$y, eta = cv$eta.opt, K = cv$K.opt )
 @
 
 A plot that illuminates the fitting procedure is the
@@ -217,7 +226,7 @@ from \texttt{cv.spls} as follows.
 
 <<eqtl-cv, eval=FALSE>>=
 set.seed(1)
-cv.spls( mice$x, mice$y, eta = seq(0.1,0.9,0.1), K = c(1:5) )
+cv <- cv.spls( mice$x, mice$y, eta = seq(0.1,0.9,0.1), K = c(1:5) )
 @
 
 SPLS fits are obtained as below.

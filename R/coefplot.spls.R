@@ -8,7 +8,7 @@ function( object, nwin=c(2,2), xvar=c(1:length(object$A)), ylimit=NA )
     
     if (q==1)
     {
-        cat("Sorry! coef.spls is designed only for the multivariate responses..\n")
+        cat("Sorry! coef.spls is designed only for the multivariate responses.\n")
     } else
     {        
         ndiv <- nwin[1]*nwin[2]
