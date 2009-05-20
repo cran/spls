@@ -2,18 +2,12 @@
 # fit SPLS direction vector
 
 "spls.dv" <-
-function( x, y, eta, kappa, eps, maxstep )
-{    
+function( Z, eta, kappa, eps, maxstep )
+{        
     # initialization
     
-    n <- nrow(x)
-    p <- ncol(x)
-    ip <- c(1:p)
-    q <- ncol(y)
-    
-    # define Z
-    
-    Z <- t(x) %*% y
+    p <- nrow(Z)
+    q <- ncol(Z)
     Znorm1 <- median( abs(Z) )
     Z <- Z / Znorm1
     

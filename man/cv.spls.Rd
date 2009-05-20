@@ -10,7 +10,7 @@
 \usage{
 cv.spls( x, y, fold=10, K, eta, kappa=0.5,
         select="pls2", fit="simpls",
-        scale.x=TRUE, scale.y=FALSE )
+        scale.x=TRUE, scale.y=FALSE, plot.it=TRUE )
 }
 \arguments{
   \item{x}{ Matrix of predictors. }
@@ -34,6 +34,7 @@ cv.spls( x, y, fold=10, K, eta, kappa=0.5,
                 by its sample standard deviation? }
   \item{scale.y}{ Scale the responses by dividing each response variable
                 by its sample standard deviation? }
+  \item{plot.it}{ Draw the heatmap-type plot of the cross-validated mean squared prediction error? }
 }
 \value{
 Invisibly returns a list with components:

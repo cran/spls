@@ -22,9 +22,9 @@ function( object, newx, type = c("fit","coefficient"), ... )
         {
             if ( ncol(newx)!=p & ncol(newx)!=length(A) )
             { stop("The dimension of test dataset is inapproprite!") }
-            if ( ncol(newx)==p ) { newx <- newx[,A] }
+            if ( ncol(newx)==p ) { newx <- newx[,A,drop=FALSE] }
             newx <- scale( newx, object$meanx[A], object$normx[A] )
-            pred <- newx %*% betahat[A,] + matrix(1,nrow(newx),1) %*% object$mu
+            pred <- newx %*% betahat[A,,drop=FALSE] + matrix(1,nrow(newx),1) %*% object$mu
         }
     }
     if ( type=="coefficient" ) { pred <- betahat }

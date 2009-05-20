@@ -12,7 +12,7 @@ function( object, coverage=0.95, B=1000,
     y <- object$y
     A <- object$A
     x <- object$x
-    xA <- object$x[,A]
+    xA <- object$x[,A,drop=FALSE]
     n <- nrow(y)
     p <- ncol(x)
     q <- ncol(y)
@@ -29,8 +29,8 @@ function( object, coverage=0.95, B=1000,
             cat( paste(perc,'% completed...\n') )
         }
         nbt <- sample( c(1:n), replace=TRUE )
-        ybt <- y[nbt,]
-        xAbt <- xA[nbt,]
+        ybt <- y[nbt,,drop=FALSE]
+        xAbt <- xA[nbt,,drop=FALSE]
         plsfit <- plsr( ybt~xAbt, ncomp=K, method=fit )
         betamat[,,i] <- coef(plsfit)
     }

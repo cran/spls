@@ -78,9 +78,13 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
     
     for (k in 1:K)
     {        
+        # define Z
+    
+        Z <- t(x1) %*% y1
+        
         # fit direction vector
         
-        what <- spls.dv( x1, y1, eta, kappa, eps, maxstep )
+        what <- spls.dv( Z, eta, kappa, eps, maxstep )
         
         # construct A
         
@@ -89,7 +93,7 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
         
         # fit pls with predictors in A
         
-        xA <- x[,A]
+        xA <- x[,A,drop=FALSE]
         plsfit <- plsr( y~xA, ncomp=min(k,length(A)),
                     method=fit, scale=FALSE )
         
@@ -108,10 +112,12 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
         {            
             pw <- pj %*% solve( t(pj) %*% pj ) %*% t(pj)
             x1 <- x
-            x1[,A] <- x[,A] - x[,A] %*% pw
+            x1[,A,drop=FALSE] <- x[,A,drop=FALSE] - x[,A,drop=FALSE] %*% pw
         }
         
         # print out variables that join the active set
+        
+        new2As[[k]] <- new2A
         
         if ( trace )
         {
@@ -132,8 +138,6 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
                 cat( xnames[new2A[(10*(nlines-1)+1):length(new2A)]] )
                 cat( "\n" )        
             }
-            
-            new2As[[k]] <- new2A
         }
     }
     

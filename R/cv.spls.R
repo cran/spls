@@ -4,7 +4,7 @@
 "cv.spls" <-
 function( x, y, fold=10, K, eta, kappa=0.5,
         select="pls2", fit="simpls",
-        scale.x=TRUE, scale.y=FALSE )
+        scale.x=TRUE, scale.y=FALSE, plot.it=TRUE )
 {
     # initialization
     
@@ -31,6 +31,7 @@ function( x, y, fold=10, K, eta, kappa=0.5,
     # heatmap-type plot for multi s & K
         
     mspemat <- matrix( 0, length(eta), length(K) )
+    
     for ( i in 1:length(eta) )
     {
         # eta
@@ -45,10 +46,10 @@ function( x, y, fold=10, K, eta, kappa=0.5,
             #print( paste('fold ',j,sep='') )
             
             omit <- foldi[[j]]
-            object <- spls( x[-omit,], y[-omit,], eta=eta[i], kappa=kappa,
+            object <- spls( x[-omit,,drop=FALSE], y[-omit,,drop=FALSE], eta=eta[i], kappa=kappa,
                         K=max(K), select=select, fit=fit,
                         scale.x=scale.x, scale.y=scale.y, trace=FALSE )
-            newx <- x[omit,]
+            newx <- x[omit,,drop=FALSE]
             newx <- scale( newx, object$meanx, object$normx )
             betamat <- object$betamat
             for (k in K)
@@ -77,8 +78,9 @@ function( x, y, fold=10, K, eta, kappa=0.5,
     cat( paste('K = ',K.opt,'\n',sep='') )
     
     # plot heatmap & return values
-            
-    heatmap.spls( t(mspemat), xlab='K', ylab='eta', main='CV MSPE Plot', coln=16, as='n' )
+    
+    if ( plot.it )
+    { heatmap.spls( t(mspemat), xlab='K', ylab='eta', main='CV MSPE Plot', coln=16, as='n' ) }
     rownames(mspemat) <- paste('eta=',eta)
     colnames(mspemat) <- paste('K =',K)
     

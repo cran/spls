@@ -9,7 +9,7 @@
 }
 \usage{
 heatmap.spls( mat, coln=16, as='n', ... )
-spls.dv( x, y, eta, kappa, eps, maxstep )
+spls.dv( Z, eta, kappa, eps, maxstep )
 ust( b, eta )
 correctp( x, y, eta, K, kappa, select, fit )
 }

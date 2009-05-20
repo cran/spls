@@ -13,9 +13,9 @@ function( object, nwin=c(2,2), xvar=c(1:length(object$A)), ylimit=NA )
     {        
         ndiv <- nwin[1]*nwin[2]
         A <- object$A
-        betahatA <- object$betahat[A,]
+        betahatA <- object$betahat[A,,drop=FALSE]
         x <- object$x
-        xA <- x[,A]
+        xA <- x[,A,drop=FALSE]
         xAname <- colnames(xA)
         
         if ( is.na(ylimit[1]) )
