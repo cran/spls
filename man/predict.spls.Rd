@@ -15,13 +15,13 @@ Make predictions or extract coefficients from a fitted SPLS object.
     \item{object}{ A fitted SPLS object.}
     \item{newx}{
     If \code{type="fit"}, then \code{newx} should be the predictor matrix of test dataset.
-    If newx is omitted, then the prediction of training dataset is returned.
+    If newx is omitted, then prediction of training dataset is returned.
     If \code{type="coefficient"}, then \code{newx} can be omitted.
     }
     \item{type}{
-    If \code{type="fit"}, the fitted values are returned.
+    If \code{type="fit"}, fitted values are returned.
     If \code{type="coefficient"},
-    the coefficient estimates of SPLS fits are returned.
+    coefficient estimates of SPLS fits are returned.
     }
     \item{...}{ Any arguments for \code{predict.spls}
                 should work for \code{coef.spls}. }
@@ -32,8 +32,9 @@ Users can input either only selected variables or all variables for \code{newx}.
 \value{Matrix of coefficient estimates if \code{type="coefficient"}.
 Matrix of predicted responses if \code{type="fit"}.}
 \references{
-Chun, H. and Keles, S. (2007). "Sparse partial least squares
+Chun, H. and Keles, S. (2009). "Sparse partial least squares
   for simultaneous dimension reduction and variable selection",
+  To appear in \emph{Journal of the Royal Statistical Society - Series B}
 (\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
 \seealso{ \code{\link{plot.spls}} and \code{\link{print.spls}}. }

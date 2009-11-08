@@ -1,10 +1,10 @@
 \name{cv.spls}
 \alias{cv.spls}
-\title{Compute and plot the cross-validated error for SPLS regression}
+\title{Compute and plot cross-validated mean squared prediction error for SPLS regression}
 \description{
- Draw the heatmap-type plot of
- the v-fold cross-validated mean square prediction error
- and return the optimal eta (thresholding parameter)
+ Draw heatmap of
+ v-fold cross-validated mean squared prediction error
+ and return optimal eta (thresholding parameter)
  and K (number of hidden components).
 }
 \usage{
@@ -20,8 +20,8 @@ cv.spls( x, y, fold=10, K, eta, kappa=0.5,
   \item{eta}{ Thresholding parameter. \code{eta} should be between 0 and 1. }
   \item{kappa}{ Parameter to control the effect of
      the concavity of the objective function
-     and the closeness of the original and surrogate direction vectors.
-     \code{kappa} is relevant only when the responses are multivariate.
+     and the closeness of original and surrogate direction vectors.
+     \code{kappa} is relevant only when responses are multivariate.
      \code{kappa} should be between 0 and 0.5. Default is 0.5. }
   \item{select}{ PLS algorithm for variable selection.
                     Alternatives are \code{"pls2"} or \code{"simpls"}.
@@ -30,23 +30,24 @@ cv.spls( x, y, fold=10, K, eta, kappa=0.5,
                     \code{"kernelpls"}, \code{"widekernelpls"},
                     \code{"simpls"}, or \code{"oscorespls"}.
                     Default is \code{"simpls"}.}
-  \item{scale.x}{ Scale the predictors by dividing each predictor variable
+  \item{scale.x}{ Scale predictors by dividing each predictor variable
                 by its sample standard deviation? }
-  \item{scale.y}{ Scale the responses by dividing each response variable
+  \item{scale.y}{ Scale responses by dividing each response variable
                 by its sample standard deviation? }
-  \item{plot.it}{ Draw the heatmap-type plot of the cross-validated mean squared prediction error? }
+  \item{plot.it}{ Draw heatmap of cross-validated mean squared prediction error? }
 }
 \value{
 Invisibly returns a list with components:
-  \item{mspemat}{ Matrix of the cross-validated mean squared prediction error.
+  \item{mspemat}{ Matrix of cross-validated mean squared prediction error.
                 Rows correspond to \code{eta} and
                 columns correspond to the number of components (\code{K}). }
   \item{eta.opt}{ Optimal \code{eta}. }
   \item{K.opt}{ Optimal \code{K}. }
 }
 \references{
-Chun, H. and Keles, S. (2007). "Sparse partial least squares
+Chun, H. and Keles, S. (2009). "Sparse partial least squares
   for simultaneous dimension reduction and variable selection",
+  To appear in \emph{Journal of the Royal Statistical Society - Series B}
 (\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
 \seealso{ \code{\link{print.spls}}, \code{\link{plot.spls}}, \code{\link{predict.spls}},
@@ -55,7 +56,7 @@ and \code{\link{coef.spls}}. }
 data(yeast)
 set.seed(1)
 # MSPE plot. eta is searched between 0.1 and 0.9 and
-# the number of hidden components is searched between 1 and 10
+# number of hidden components is searched between 1 and 10
 cv <- cv.spls( yeast$x, yeast$y, K = c(1:10), eta = seq(0.1,0.9,0.1) )
 # Optimal eta and K
 cv$eta.opt

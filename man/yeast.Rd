@@ -3,7 +3,7 @@
 \alias{yeast}
 \title{Yeast Cell Cycle Dataset}
 \description{
-  This is the Yeast Cell Cycle dataset used in Chun and Keles (2007).
+  This is the Yeast Cell Cycle dataset used in Chun and Keles (2009).
 }
 \usage{ data(yeast) }
 \format{
@@ -15,13 +15,13 @@
   }
 }
 \details{
-  The \code{y} matrix is the cell cycle gene expression data (Spellman et al., 1998)
+  Matrix \code{y} is cell cycle gene expression data (Spellman et al., 1998)
   of 542 genes from an \eqn{\alpha} factor based experiment.
   Each column corresponds to mRNA levels
   measured at every 7 minutes during 119 minutes (a total of 18 measurements).
-  The \code{x} matrix is the chromatin immunoprecipitation on chip (ChIP-chip) data of
+  Matrix \code{x} is the chromatin immunoprecipitation on chip (ChIP-chip) data of
   Lee et al. (2002) and it contains the binding information for 106
-  transcription factors. See Chun and Keles (2007) for more details. 
+  transcription factors. See Chun and Keles (2009) for more details. 
 }
 \source{
 Lee, T. I., N. J. Rinaldi, F. Robert, D. T. Odom, Z. Bar-Joseph, G. K. Gerber, N. M. Hannett,
@@ -36,10 +36,10 @@ the yeast \emph{Saccharomyces cerevisiae} by microarray hydrization",
 \emph{Molecular Biology of the Cell}, 9, pp. 3273--3279.
 }
 \references{
-Chun, H. and Keles, S. (2007). "Sparse partial least squares
+Chun, H. and Keles, S. (2009). "Sparse partial least squares
   for simultaneous dimension reduction and variable selection",
-(\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}).
-}
+  To appear in \emph{Journal of the Royal Statistical Society - Series B}
+(\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \examples{
 data(yeast)
 yeast$x[1:5,1:5]

@@ -15,14 +15,15 @@
 }
 \details{
 \code{plot.spls} provides the coefficient path plot of SPLS fits.
-The plot shows how the estimated coefficients change
+The plot shows how estimated coefficients change
 as a function of the number of hidden components (\code{K}),
 when \code{eta} is fixed at the value used by the original SPLS fit.
 }
 \value{NULL.}
 \references{
-Chun, H. and Keles, S. (2007). "Sparse partial least squares
+Chun, H. and Keles, S. (2009). "Sparse partial least squares
   for simultaneous dimension reduction and variable selection",
+  To appear in \emph{Journal of the Royal Statistical Society - Series B}
 (\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
 \seealso{ \code{\link{print.spls}}, \code{\link{predict.spls}},
@@ -31,7 +32,7 @@ and \code{\link{coef.spls}}. }
 data(yeast)
 # SPLS with eta=0.7 & 8 hidden components
 f <- spls( yeast$x, yeast$y, K=8, eta=0.7 )
-# Draw the coefficient path plots for the first two responses
+# Draw coefficient path plots for the first two responses
 plot( f, yvar=c(1:2) )
 }
 \keyword{hplot}

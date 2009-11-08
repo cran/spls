@@ -1,8 +1,8 @@
 \name{print.spls}
 \alias{print.spls}
-\title{Print fits of a SPLS object}
+\title{Print function for a SPLS object}
 \description{
- Print out SPLS fits, the number and the list of selected predictors.
+ Print out SPLS fit, the number and the list of selected predictors.
 }
 \usage{
 \method{print}{spls}( x, ... )
@@ -13,8 +13,9 @@
 }
 \value{NULL.}
 \references{
-Chun, H. and Keles, S. (2007). "Sparse partial least squares
-  for simultaneous dimension reduction and variable selection"
+Chun, H. and Keles, S. (2009). "Sparse partial least squares
+  for simultaneous dimension reduction and variable selection",
+  To appear in \emph{Journal of the Royal Statistical Society - Series B}
 (\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
 \seealso{ \code{\link{plot.spls}}, \code{\link{predict.spls}},

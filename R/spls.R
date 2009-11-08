@@ -112,7 +112,7 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
         {            
             pw <- pj %*% solve( t(pj) %*% pj ) %*% t(pj)
             x1 <- x
-            x1[,A,drop=FALSE] <- x[,A,drop=FALSE] - x[,A,drop=FALSE] %*% pw
+            x1[,A] <- x[,A,drop=FALSE] - x[,A,drop=FALSE] %*% pw
         }
         
         # print out variables that join the active set
