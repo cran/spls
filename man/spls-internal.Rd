@@ -28,9 +28,9 @@ sgpls.multi( x, y, K, eta, scale.x=TRUE,
         eps=1e-5, denom.eps=1e-20, zero.eps=1e-5, maxstep=100,
         br=TRUE, ftype='iden' )
 cv.sgpls.binary( x, y, fold=10, K, eta, scale.x=TRUE, plot.it=TRUE,
-    br=TRUE, ftype='iden' )
+    br=TRUE, ftype='iden', n.core=8 )
 cv.sgpls.multi( x, y, fold=10, K, eta, scale.x=TRUE, plot.it=TRUE,
-    br=TRUE, ftype='iden' )
+    br=TRUE, ftype='iden', n.core=8 )
 }
 \details{
 These are not to be called by the user.

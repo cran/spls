@@ -1,0 +1,13 @@
+import( MASS, pls, nnet )
+
+export( ci.spls, coefplot.spls, correct.spls )
+
+export( plot.spls, heatmap.spls )
+
+export( cv.sgpls, cv.splsda, cv.spls )
+
+export( predict.sgpls, predict.splsda, predict.spls )
+
+export( print.sgpls, print.splsda, print.spls )
+
+export( sgpls, splsda, spls )

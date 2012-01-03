@@ -9,7 +9,7 @@
 }
 \usage{
 cv.sgpls( x, y, fold=10, K, eta, scale.x=TRUE, plot.it=TRUE,
-        br=TRUE, ftype='iden' )
+        br=TRUE, ftype='iden', n.core=8 )
 }
 \arguments{
   \item{x}{ Matrix of predictors. }
@@ -25,6 +25,13 @@ cv.sgpls( x, y, fold=10, K, eta, scale.x=TRUE, plot.it=TRUE,
      Alternatives are \code{"iden"} (the approximated version)
      or \code{"hat"} (the original version).
      Default is \code{"iden"}.}
+  \item{n.core}{ Number of CPUs to be used when parallel computing is utilized. }
+}
+\details{
+Parallel computing can be utilized for faster computation
+if \code{multicore} package is installed.
+Users can change the number of CPUs to be used
+by changing the argument \code{n.core}.
 }
 \value{
 Invisibly returns a list with components:

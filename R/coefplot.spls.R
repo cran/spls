@@ -30,8 +30,8 @@ function( object, nwin=c(2,2), xvar=c(1:length(object$A)), ylimit=NA )
             plot( c(1:q), betahatA[i,], type='l', ylim=ylimit,
                 xlab='Responses', ylab='Coefficient Estimates', main=xAname[i] )     
             abline( h=0, lty=2, col='red' )   
-            if ( i%%ndiv==0 ) { close.screen(all = TRUE) }      
+            if ( i%%ndiv==0 ) { close.screen( all.screens = TRUE ) }      
         }
-        if ( i%%ndiv>0 ) { close.screen(all = TRUE) }
+        if ( i%%ndiv>0 ) { close.screen( all.screens = TRUE ) }
     }
 }

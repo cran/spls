@@ -9,7 +9,7 @@
 }
 \usage{
 cv.splsda( x, y, fold=10, K, eta, kappa=0.5,
-        classifier=c('lda','logistic'), scale.x=TRUE, plot.it=TRUE )
+        classifier=c('lda','logistic'), scale.x=TRUE, plot.it=TRUE, n.core=8 )
 }
 \arguments{
   \item{x}{ Matrix of predictors. }
@@ -28,6 +28,13 @@ cv.splsda( x, y, fold=10, K, eta, kappa=0.5,
   \item{scale.x}{ Scale predictors by dividing each predictor variable
                 by its sample standard deviation? }
   \item{plot.it}{ Draw the heatmap of the cross-validated misclassification rates? }
+  \item{n.core}{ Number of CPUs to be used when parallel computing is utilized. }
+}
+\details{
+Parallel computing can be utilized for faster computation
+if \code{multicore} package is installed.
+Users can change the number of CPUs to be used
+by changing the argument \code{n.core}.
 }
 \value{
 Invisibly returns a list with components:

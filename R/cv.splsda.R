@@ -3,7 +3,7 @@
 
 "cv.splsda" <-
 function( x, y, fold=10, K, eta, kappa=0.5,
-        classifier=c('lda','logistic'), scale.x=TRUE, plot.it=TRUE )
+        classifier=c('lda','logistic'), scale.x=TRUE, plot.it=TRUE, n.core=8 )
 {
     result.mat <- c()
     
@@ -11,62 +11,72 @@ function( x, y, fold=10, K, eta, kappa=0.5,
         
     foldi <- cv.split( y, fold )
     
-    if( "rparallel" %in% names( getLoadedDLLs()) )
-    {
-        runParallel( resultVar="result.mat", resultOp="rbind", nWorkers=4 )
-    } else
-    {
-        library(spls)
-        
-        # initialization
+    # initialization
     
-        x <- as.matrix(x)
-        n <- nrow(x)
-        p <- ncol(x)
-        ip <- c(1:p)
-        y <- as.matrix(y)
-        q <- ncol(y)
+    x <- as.matrix(x)
+    n <- nrow(x)
+    p <- ncol(x)
+    ip <- c(1:p)
+    y <- as.matrix(y)
+    q <- ncol(y)
+    
+    # eta & K pair
+    
+    eta.K.pair <- cbind( rep(eta,each=length(K)), rep(K,length(eta)) )
+    eta.K.list <- split( eta.K.pair, c(1:nrow(eta.K.pair)) )
+    
+    # fit SPLSDA for given eta & K
+    
+    .fit.splsda <- function( eta.val, K.val ) {	
+	mspemati <- rep( 0, fold )
+	Ai <- rep( 0, fold )
+	
+	for ( k in 1:fold )
+	{
+		# fold
+	
+		#print( paste('fold ',k,sep='') )
+		
+		omit <- foldi[[k]]
+		train.x <- x[-omit,]
+		train.y <- y[-omit,]
+		test.x <- x[omit,]
+		test.y <- y[omit,]
+		
+		splsda.fit <- splsda( train.x, train.y, K=K.val, eta=eta.val,
+			scale.x=scale.x, classifier=classifier )
+		pred <- as.numeric( as.vector( predict(splsda.fit, newx=test.x) ) )
+		mspemati[ k ] <- mean( as.numeric( pred != test.y ) )
+		Ai[ k ] <- mean( length(splsda.fit$A) )
+	}
+	
+	mspe.ij <- c( mean(mspemati), mean(Ai), eta.val, K.val )
+	return(mspe.ij)
+    }
+    
+    # CV MSPE estimation (use multicore if possible)
+    
+    if ( is.element( "multicore", installed.packages()[,1] ) ) {
+        # if "multicore" package exists, utilize parallel computing with "mclapply"
+        library(multicore)
         
-        # CV MSPE estimation
+        result.list <- mclapply( eta.K.list, 
+            function(x) .fit.splsda( eta.val=x[1], K.val=x[2] ), 
+            mc.cores = n.core )
+    } else {
+        # otherwise, use usual "lapply"
         
-        for ( i in 1:length(eta) )
-        {
-            print( paste('eta =',eta[i],sep='') )
-            
-            for ( j in 1:length(K) )
-            {    
-                print( paste('K =',K[j],sep='') ) 
-                
-                mspemati <- rep( 0, fold )
-                Ai <- rep( 0, fold )
-                
-                for ( k in 1:fold )
-                {
-                    # fold
-                
-                    #print( paste('fold ',k,sep='') )
-                    
-                    omit <- foldi[[k]]
-                    train.x <- x[-omit,]
-                    train.y <- y[-omit,]
-                    test.x <- x[omit,]
-                    test.y <- y[omit,]
-                    
-                    sgpls.fit <- splsda( train.x, train.y, K=K[j], eta=eta[i],
-                        scale.x=scale.x, classifier=classifier )
-                    pred <- as.numeric( as.vector( predict(sgpls.fit, newx=test.x) ) )
-                    mspemati[ k ] <- mean( as.numeric( pred != test.y ) )
-                    Ai[ k ] <- mean( length(sgpls.fit$A) )
-                }
-                
-                mspe.ij <- c( mean(mspemati), mean(Ai), eta[i], K[j] )
-                result.mat <- rbind( result.mat, mspe.ij )
-            } 
-        }
+        result.list <- lapply( eta.K.list, 
+            function(x) .fit.splsda( eta.val=x[1], K.val=x[2] ) )
+    }
+    
+    result.mat <- c()
+    for ( i in 1:length(result.list) ) {
+    	result.mat <- rbind( result.mat, result.list[[i]] )
     }
     
     mspemat <- matrix( result.mat[,1], length(K), length(eta) )
-    mspemat <- t(mspemat)   
+    mspemat <- t(mspemat)
     rownames(mspemat) <- eta
     colnames(mspemat) <- K
     
