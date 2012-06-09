@@ -7,7 +7,7 @@ function( object, coverage=0.95, B=1000,
         K=object$K, fit=object$fit )
 {
     # initialization
-    
+
     betahat <- object$betahat
     y <- object$y
     A <- object$A
@@ -16,11 +16,11 @@ function( object, coverage=0.95, B=1000,
     n <- nrow(y)
     p <- ncol(x)
     q <- ncol(y)
-    
+
     # bootstrap
-    
+
     betamat <- array( 0, c(length(A),q,B) )
-    
+
     for ( i in 1:B )
     {
         if ( i%%ceiling(B/10)==0 )
@@ -34,9 +34,9 @@ function( object, coverage=0.95, B=1000,
         plsfit <- plsr( ybt~xAbt, ncomp=K, method=fit )
         betamat[,,i] <- coef(plsfit)
     }
-    
+
     # calculate CI
-    
+
     tailp <- ( 1 - coverage ) / 2
     qt <- function(x) { quantile( x, c(tailp,1-tailp) ) }
     cibeta <- list()
@@ -49,10 +49,10 @@ function( object, coverage=0.95, B=1000,
         lbmat[A,i] <- cii[,1]
         ubmat[A,i] <- cii[,2]
     }
-    names(cibeta) <- colnames(y)    
-    
+    names(cibeta) <- colnames(y)
+
     # CI plot
-    
+
     if ( plot.it==TRUE )
     {
         if ( plot.fix=='y' )
@@ -61,7 +61,7 @@ function( object, coverage=0.95, B=1000,
             k <- 1
             for ( i in plot.var )
             {
-                if ( k>1 ) { x11() }
+                if ( k>1 ) { dev.new() }
                 ylimit <- c( min(lbmat[,i]), max(ubmat[,i]) )
                 plot( A, betahat[A,i], type='p',
                     xlim=c(1,p), ylim=ylimit,
@@ -69,11 +69,11 @@ function( object, coverage=0.95, B=1000,
                     ylab='Coefficient Estimates',
                     main=paste( format(100*coverage,nsmall=0),
                     '% Bootstrapped CI of Coefficients',sep='') )
-                for ( j in 1:length(A) )                  
+                for ( j in 1:length(A) )
                 { lines( c(A[j],A[j]), c(lbmat[A[j],i],ubmat[A[j],i]) ) }
                 abline( h=0, lty=2, col='red' )
                 k <- k + 1
-            }        
+            }
         }
         if ( plot.fix=='x' )
         {
@@ -81,7 +81,7 @@ function( object, coverage=0.95, B=1000,
             k <- 1
             for ( i in plot.var )
             {
-                if ( k>1 ) { x11() }
+                if ( k>1 ) { dev.new() }
                 ylimit <- c( min(lbmat[i,]), max(ubmat[i,]) )
                 plot( c(1:q), betahat[i,], type='p',
                     xlim=c(1,q), ylim=ylimit,
@@ -89,15 +89,15 @@ function( object, coverage=0.95, B=1000,
                     ylab='Coefficient Estimates',
                     main=paste( format(100*coverage,nsmall=0),
                     '% Bootstrapped CI of Coefficients',sep='') )
-                for ( j in 1:q )                  
+                for ( j in 1:q )
                 { lines( c(j,j), c(lbmat[i,j],ubmat[i,j]) ) }
                 abline( h=0, lty=2, col='red' )
                 k <- k + 1
-            }                
+            }
         }
     }
-    
+
     ci <- list( cibeta=cibeta, betahat=betahat,
-                lbmat=lbmat, ubmat=ubmat )    
-    invisible(ci)    
+                lbmat=lbmat, ubmat=ubmat )
+    invisible(ci)
 }

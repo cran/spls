@@ -31,8 +31,7 @@ cv.splsda( x, y, fold=10, K, eta, kappa=0.5,
   \item{n.core}{ Number of CPUs to be used when parallel computing is utilized. }
 }
 \details{
-Parallel computing can be utilized for faster computation
-if \code{multicore} package is installed.
+Parallel computing can be utilized for faster computation.
 Users can change the number of CPUs to be used
 by changing the argument \code{n.core}.
 }
@@ -56,7 +55,8 @@ data(prostate)
 set.seed(1)
 # misclassification rate plot. eta is searched between 0.1 and 0.9 and
 # number of hidden components is searched between 1 and 5
-\dontrun{ cv <- cv.splsda( prostate$x, prostate$y, K = c(1:5), eta = seq(0.1,0.9,0.1), scale.x=FALSE, fold=5 )}
+\dontrun{ cv <- cv.splsda( prostate$x, prostate$y, K = c(1:5), eta = seq(0.1,0.9,0.1),
+         scale.x=FALSE, fold=5 )}
 \dontshow{ cv <- list(); cv$eta.opt <- 0.8; cv$K.opt <- 3; }
 (splsda( prostate$x, prostate$y, eta=cv$eta.opt, K=cv$K.opt, scale.x=FALSE ))
 }

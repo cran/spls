@@ -64,7 +64,7 @@ coef.f <- coef(f)
 coef.f[,1]
 # Coefficient path plot
 plot( f, yvar=1 )
-x11()
+dev.new()
 # Coefficient plot of selected variables
 coefplot.spls( f, xvar=c(1:4) )
 }
