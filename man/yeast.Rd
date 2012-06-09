@@ -3,7 +3,7 @@
 \alias{yeast}
 \title{Yeast Cell Cycle Dataset}
 \description{
-  This is the Yeast Cell Cycle dataset used in Chun and Keles (2009).
+  This is the Yeast Cell Cycle dataset used in Chun and Keles (2010).
 }
 \usage{ data(yeast) }
 \format{
@@ -21,25 +21,24 @@
   measured at every 7 minutes during 119 minutes (a total of 18 measurements).
   Matrix \code{x} is the chromatin immunoprecipitation on chip (ChIP-chip) data of
   Lee et al. (2002) and it contains the binding information for 106
-  transcription factors. See Chun and Keles (2009) for more details. 
+  transcription factors. See Chun and Keles (2010) for more details. 
 }
 \source{
-Lee, T. I., N. J. Rinaldi, F. Robert, D. T. Odom, Z. Bar-Joseph, G. K. Gerber, N. M. Hannett,
-C. T. Harbison, C. M. Thomson, I. Simon, J. Zeitlinger, E. G. Jennings, H. L. Murray, D.
-B. Gordon, B. Ren, J. J. Wyrick, J.-B. Tagne, T. L. Volkert, E. Fraenkel, D. K. Gifford,
-and R. A. Young (2002). "Transcriptional regulatory networks in \emph{Saccharomyces cerevisiae}",
-\emph{Science}, 298, pp. 799--804.
+Lee TI, Rinaldi NJ, Robert F, Odom DT, Bar-Joseph Z, Gerber GK, Hannett NM,
+Harbison CT, Thomson CM, Simon I, Zeitlinger J, Jennings EG, Murray HL,
+Gordon DB, Ren B, Wyrick JJ, Tagne JB, Volkert TL, Fraenkel E, Gifford DK,
+and Young RA (2002), "Transcriptional regulatory networks in \emph{Saccharomyces cerevisiae}",
+\emph{Science}, Vol. 298, pp. 799--804.
 
-Spellman, P. T., G. Sherlock, M. Q. Zhang, V. R. Iyer, K. Anders, M. B. Eisen, P. O. Brown, D.
-Botstein, and B. Futcher (1998). "Comprehensive identification of cell cycle-regulated genes of
+Spellman PT, Sherlock G, Zhang MQ, Iyer VR, Anders K, Eisen MB, Brown PO,
+Botstein D, and Futcher B (1998), "Comprehensive identification of cell cycle-regulated genes of
 the yeast \emph{Saccharomyces cerevisiae} by microarray hydrization",
-\emph{Molecular Biology of the Cell}, 9, pp. 3273--3279.
+\emph{Molecular Biology of the Cell}, Vol. 9, pp. 3273--3279.
 }
 \references{
-Chun, H. and Keles, S. (2009). "Sparse partial least squares
-  for simultaneous dimension reduction and variable selection",
-  To appear in \emph{Journal of the Royal Statistical Society - Series B}
-(\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
+Chun H and Keles S (2010), "Sparse partial least squares
+for simultaneous dimension reduction and variable selection",
+\emph{Journal of the Royal Statistical Society - Series B}, Vol. 72, pp. 3--25. }
 \examples{
 data(yeast)
 yeast$x[1:5,1:5]

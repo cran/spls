@@ -3,7 +3,7 @@
 \alias{lymphoma}
 \title{Lymphoma Gene Expression Dataset}
 \description{
-  This is the Lymphoma Gene Expression dataset used in Chung and Keles (2009).
+  This is the Lymphoma Gene Expression dataset used in Chung and Keles (2010).
 }
 \usage{ data(lymphoma) }
 \format{
@@ -22,26 +22,26 @@
   arrays were normalized, imputed, log transformed, and standardized 
   to zero mean and unit variance across genes as described
   in Dettling (2004) and Dettling and Beuhlmann (2002).
-  See Chung and Keles (2009) for more details. 
+  See Chung and Keles (2010) for more details. 
 }
 \source{
-Alizadeh, A., Eisen, M. B., Davis, R. E., Ma, C., Lossos, I. S., Rosenwald, A., Boldrick, J. C.,
-Sabet, H., Tran, T., Yu, X., Powell, J. I., Yang, L., Marti, G. E., Moore, T., Jr., J. H., Lu,
-L., Lewis, D. B., Tibshirani, R., Sherlock, G., Chan, W. C., Greiner, T. C., Weisenburger,
-D. D., Armitage, J. O., Warnke, R., Levy, R., Wilson, W., Grever, M. R., Byrd, J. C.,
-Botstein, D., Brown, P. O., , and Staudt, L. M. (2000). "Distinct types of diffuse large
-B-cell lymphoma identified by gene expression profiling", \emph{Nature}, 403, pp. 503--511.
+Alizadeh A, Eisen MB, Davis RE, Ma C, Lossos IS, Rosenwald A, Boldrick JC,
+Sabet H, Tran T, Yu X, Powell JI, Yang L, Marti GE, Moore T, Hudson J Jr, 
+Lu L, Lewis DB, Tibshirani R, Sherlock G, Chan WC, Greiner TC, 
+Weisenburger DD, Armitage JO, Warnke R, Levy R, Wilson W, Grever MR, Byrd JC,
+Botstein D, Brown PO, and Staudt LM (2000), "Distinct types of diffuse large
+B-cell lymphoma identified by gene expression profiling", \emph{Nature}, Vol. 403, pp. 503--511.
 }
 \references{
-Chung, D. and Keles, S. (2009). "Sparse partial least squares classification
-  for high dimensional data"
-(\url{http://www.stat.wisc.edu/~keles/Papers/C_SPLS.pdf}). 
+Chung D and Keles S (2010), 
+"Sparse partial least squares classification for high dimensional data",
+\emph{Statistical Applications in Genetics and Molecular Biology}, Vol. 9, Article 17.
   
-Dettling, M. (2004). "BagBoosting for tumor classification with gene expression data",
-\emph{Bioinformatics}, 20, pp. 3583--3593.
+Dettling M (2004), "BagBoosting for tumor classification with gene expression data",
+\emph{Bioinformatics}, Vol. 20, pp. 3583--3593.
 
-Dettling, M. and Beuhlmann, P. (2002). "Supervised clustering of genes", \emph{Genome Biology},
-3, pp. research0069.1--0069.15.
+Dettling M and Beuhlmann P (2002), "Supervised clustering of genes", \emph{Genome Biology},
+Vol. 3, pp. research0069.1--0069.15.
 }
 \examples{
 data(lymphoma)

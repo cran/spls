@@ -25,10 +25,9 @@ only with multivariate response SPLS.
 }
 \value{NULL.}
 \references{
-Chun, H. and Keles, S. (2009). "Sparse partial least squares
-  for simultaneous dimension reduction and variable selection",
-  To appear in \emph{Journal of the Royal Statistical Society - Series B}
-(\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
+Chun H and Keles S (2010), "Sparse partial least squares
+for simultaneous dimension reduction and variable selection",
+\emph{Journal of the Royal Statistical Society - Series B}, Vol. 72, pp. 3--25.}
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
 \seealso{ \code{\link{ci.spls}}, and \code{\link{correct.spls}} and
 \code{\link{plot.spls}}. }

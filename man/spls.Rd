@@ -35,7 +35,7 @@ spls( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
   \item{trace}{ Print out the progress of variable selection? }
 }
 \details{
-The SPLS method is described in detail in Chun and Keles (2009).
+The SPLS method is described in detail in Chun and Keles (2010).
 SPLS directly imposes sparsity on the dimension reduction step of PLS
 in order to achieve accurate prediction and variable selection simultaneously.
 The option \code{select} refers to the PLS algorithm for variable selection.
@@ -48,10 +48,9 @@ The choices for \code{select} and \code{fit} are independent.
 \value{A \pkg{spls} object is returned.
 print, plot, predict, coef, ci.spls, coefplot.spls methods use this object.}
 \references{
-Chun, H. and Keles, S. (2009). "Sparse partial least squares
-  for simultaneous dimension reduction and variable selection",
-  To appear in \emph{Journal of the Royal Statistical Society - Series B}
-(\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
+Chun H and Keles S (2010), "Sparse partial least squares
+for simultaneous dimension reduction and variable selection",
+\emph{Journal of the Royal Statistical Society - Series B}, Vol. 72, pp. 3--25. }
 \author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
 \seealso{ \code{\link{print.spls}}, \code{\link{plot.spls}}, \code{\link{predict.spls}},
 \code{\link{coef.spls}}, \code{\link{ci.spls}}, and \code{\link{coefplot.spls}}. }

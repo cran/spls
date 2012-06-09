@@ -40,9 +40,9 @@ Matrix of predicted responses if \code{type="fit"}
 (responses will be predicted classes if \code{fit.type="class"}
 or predicted probabilities if \code{fit.type="response"}).}
 \references{
-Chung, D. and Keles, S. (2009). "Sparse partial least squares classification
-  for high dimensional data"
-(\url{http://www.stat.wisc.edu/~keles/Papers/C_SPLS.pdf}). }
+Chung D and Keles S (2010), 
+"Sparse partial least squares classification for high dimensional data",
+\emph{Statistical Applications in Genetics and Molecular Biology}, Vol. 9, Article 17.}
 \author{ Dongjun Chung and Sunduz Keles. }
 \seealso{ \code{\link{print.sgpls}}. }
 \examples{

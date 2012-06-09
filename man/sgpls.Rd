@@ -28,9 +28,9 @@ sgpls( x, y, K, eta, scale.x=TRUE,
      Default is \code{"iden"}.}
 }
 \details{
-The SGPLS method is described in detail in Chung and Keles (2009).
+The SGPLS method is described in detail in Chung and Keles (2010).
 SGPLS provides PLS-based classification with variable selection,
-by incorporating sparse partial least squares (SPLS) proposed in Chun and Keles (2009)
+by incorporating sparse partial least squares (SPLS) proposed in Chun and Keles (2010)
 into a generalized linear model (GLM) framework.
 \code{y} is assumed to have numerical values, 0, 1, ..., G,
 where G is the number of classes subtracted by one.
@@ -38,14 +38,13 @@ where G is the number of classes subtracted by one.
 \value{A \code{sgpls} object is returned.
 print, predict, coef methods use this object.}
 \references{
-Chung, D. and Keles, S. (2009). "Sparse partial least squares classification
-  for high dimensional data"
-(\url{http://www.stat.wisc.edu/~keles/Papers/C_SPLS.pdf}).
-  
-Chun, H. and Keles, S. (2009). "Sparse partial least squares
-  for simultaneous dimension reduction and variable selection",
-  To appear in \emph{Journal of the Royal Statistical Society - Series B}
-(\url{http://www.stat.wisc.edu/~keles/Papers/SPLS_Nov07.pdf}). }
+Chung D and Keles S (2010), 
+"Sparse partial least squares classification for high dimensional data",
+\emph{Statistical Applications in Genetics and Molecular Biology}, Vol. 9, Article 17.
+
+Chun H and Keles S (2010), "Sparse partial least squares
+for simultaneous dimension reduction and variable selection",
+\emph{Journal of the Royal Statistical Society - Series B}, Vol. 72, pp. 3--25. }
 \author{ Dongjun Chung and Sunduz Keles. }
 \seealso{ \code{\link{print.sgpls}}, \code{\link{predict.sgpls}}, and \code{\link{coef.sgpls}}. }
 \examples{
