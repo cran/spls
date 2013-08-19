@@ -56,11 +56,14 @@ data(yeast)
 set.seed(1)
 # MSPE plot. eta is searched between 0.1 and 0.9 and
 # number of hidden components is searched between 1 and 10
+
+\dontrun{
 cv <- cv.spls( yeast$x, yeast$y, K = c(1:10), eta = seq(0.1,0.9,0.1) )
 # Optimal eta and K
 cv$eta.opt
 cv$K.opt
 (spls( yeast$x, yeast$y, eta=cv$eta.opt, K=cv$K.opt ))
+}
 }
 \keyword{regression}
 \keyword{multivariate}

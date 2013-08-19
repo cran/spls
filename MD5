@@ -1,4 +1,5 @@
-cd9e52fa27f199ab625c16c710b74719 *DESCRIPTION
+79b8d0b0255874181e8c1b5e94d8cc60 *ChangeLog
+9e26a0da9820bffe0d9e16967995f4f2 *DESCRIPTION
 6009f19847ce7455cf2dffebc2466ed4 *NAMESPACE
 4fa80a53c15de688bb7c8af1cada6a13 *R/ci.spls.R
 c8e9dbca54f349647967d5ada8139863 *R/coefplot.spls.R
@@ -26,17 +27,20 @@ a034327007a779cea528b5ecc73c6e06 *R/spls.R
 23cd456387ce1b0a44bb5ccdba37b305 *R/splsda.R
 b566998944515421ee7522dc5e1e88fb *R/ust.R
 5fe8e2c1d2e7eeb395e88d5b9e594694 *R/wpls.R
+5752f99eceda48e21d5743fe05c7c9b6 *R/zzz.R
 f7bee597991a16d8e0808b1434baeed7 *data/datalist
 84092bb9c188272f43e30d46fce5b316 *data/lymphoma.RData
 b08d4e70af63ccb8825cdcf8e992c30e *data/mice.RData
 30a6779405c7ce68b234fd083afaac8f *data/prostate.RData
 44cc98763b3d71675bbb17a41c5c191c *data/yeast.RData
+c99601d736bda78b4f73e7812561d1ab *inst/doc/spls-example.R
+41fdb9c220d1d3b78410c489cb542873 *inst/doc/spls-example.Rnw
 50fd00ab6daf057d58ad4db9e8b8ab84 *inst/doc/spls-example.pdf
 e2ee125591db89cae807cb64acf52d5d *man/ci.spls.Rd
 b500196abdee9fa35e20d0440a0a2dcc *man/coefplot.spls.Rd
 e6919efd15c79d1ccee89e186994cda5 *man/correct.spls.Rd
 139ad4121c633a56f7dc5962e563c97d *man/cv.sgpls.Rd
-3cce33464334199abd751458c433ec6e *man/cv.spls.Rd
+eef0274ded6e305df5f87a602c8bf4b5 *man/cv.spls.Rd
 5369cbf42e891168ecd91f686054852f *man/cv.splsda.Rd
 a6f8278394ff53420c778d47db0603cd *man/lymphoma.Rd
 65c2e6a1a338560b3e36f1eea04e70d4 *man/mice.Rd
@@ -53,4 +57,6 @@ dcdc87c29334e6d6a025396d9395f1b3 *man/print.spls.Rd
 90c2535b8eda1946c43eefe081de9a75 *man/spls.Rd
 84328a72f4b0fbdb16ff25cb0a144edb *man/splsda.Rd
 fc4cc0806a1ab36c99fcac7b9b1a1e3b *man/yeast.Rd
+e7551cfc16e18b589bea11cb46c8e1d9 *tests/tspls.R
+ea8e080b602c5efe93260228ea38d0be *tests/tspls.Rout.save
 41fdb9c220d1d3b78410c489cb542873 *vignettes/spls-example.Rnw
