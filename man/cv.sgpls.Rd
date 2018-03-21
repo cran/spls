@@ -41,21 +41,29 @@ Invisibly returns a list with components:
   \item{K.opt}{ Optimal \code{K}. }
 }
 \references{
-Chung D and Keles S (2010), 
-"Sparse partial least squares classification for high dimensional data",
-\emph{Statistical Applications in Genetics and Molecular Biology}, Vol. 9, Article 17.}
+    Chung D and Keles S (2010), 
+    "Sparse partial least squares classification for high dimensional data",
+    \emph{Statistical Applications in Genetics and Molecular Biology}, Vol. 9, Article 17.
+}
 \author{ Dongjun Chung and Sunduz Keles. }
 \seealso{ \code{\link{print.sgpls}}, \code{\link{predict.sgpls}},
 and \code{\link{coef.sgpls}}. }
 \examples{
-data(prostate)
-set.seed(1)
-# misclassification rate plot. eta is searched between 0.1 and 0.9 and
-# number of hidden components is searched between 1 and 5
-\dontrun{cv <- cv.sgpls( prostate$x, prostate$y, K = c(1:5), eta = seq(0.1,0.9,0.1),
-         scale.x=FALSE, fold=5 )}
-\dontshow{ cv <- list(); cv$eta.opt <- 0.6; cv$K.opt <- 3; }
-(sgpls( prostate$x, prostate$y, eta=cv$eta.opt, K=cv$K.opt, scale.x=FALSE ))
+    data(prostate)
+    set.seed(1)
+
+    # misclassification rate plot. eta is searched between 0.1 and 0.9 and
+    # number of hidden components is searched between 1 and 5
+    \dontrun{
+        cv <- cv.sgpls(prostate$x, prostate$y, K = c(1:5), eta = seq(0.1,0.9,0.1),
+            scale.x=FALSE, fold=5)
+    }
+    
+    \dontshow{
+        cv <- list(); cv$eta.opt <- 0.6; cv$K.opt <- 3; 
+    }
+
+    (sgpls(prostate$x, prostate$y, eta=cv$eta.opt, K=cv$K.opt, scale.x=FALSE))
 }
 \keyword{models}
 \keyword{multivariate}

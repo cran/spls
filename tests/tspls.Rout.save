@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2013-06-04 r62868) -- "Unsuffered Consequences"
-Copyright (C) 2013 The R Foundation for Statistical Computing
+R version 3.4.3 (2017-11-30) -- "Kite-Eating Tree"
+Copyright (C) 2017 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -15,10 +15,11 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
+> ## VT::16.03.2018 - this will render the output independent
+> ##  from the version of the package
+> suppressPackageStartupMessages(library(spls))
+> 
 > library(spls)
-Sparse Partial Least Squares (SPLS) Regression and
-Classification (version 2.2-1)
-
 > data(yeast)
 > 
 > set.seed(1)
@@ -2307,4 +2308,4 @@ dev.new(): using pdf(file="Rplots1.pdf")
 > 
 > proc.time()
    user  system elapsed 
-  26.98    0.48   27.55 
+  14.02    0.24   14.43 

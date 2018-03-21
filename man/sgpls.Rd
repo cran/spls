@@ -36,25 +36,27 @@ into a generalized linear model (GLM) framework.
 where G is the number of classes subtracted by one.
 }
 \value{A \code{sgpls} object is returned.
-print, predict, coef methods use this object.}
+    print, predict, coef methods use this object.}
 \references{
-Chung D and Keles S (2010), 
-"Sparse partial least squares classification for high dimensional data",
-\emph{Statistical Applications in Genetics and Molecular Biology}, Vol. 9, Article 17.
+    Chung D and Keles S (2010), 
+    "Sparse partial least squares classification for high dimensional data",
+    \emph{Statistical Applications in Genetics and Molecular Biology}, Vol. 9, Article 17.
 
-Chun H and Keles S (2010), "Sparse partial least squares
-for simultaneous dimension reduction and variable selection",
-\emph{Journal of the Royal Statistical Society - Series B}, Vol. 72, pp. 3--25. }
+    Chun H and Keles S (2010), "Sparse partial least squares
+    for simultaneous dimension reduction and variable selection",
+    \emph{Journal of the Royal Statistical Society - Series B}, Vol. 72, pp. 3--25. 
+}
 \author{ Dongjun Chung and Sunduz Keles. }
 \seealso{ \code{\link{print.sgpls}}, \code{\link{predict.sgpls}}, and \code{\link{coef.sgpls}}. }
 \examples{
-data(prostate)
-# SGPLS with eta=0.6 & 3 hidden components
-f <- sgpls( prostate$x, prostate$y, K=3, eta=0.6, scale.x=FALSE )
-print(f)
-# Print out coefficients
-coef.f <- coef(f)
-coef.f[ coef.f!=0, ]
+    data(prostate)
+
+    # SGPLS with eta=0.6 & 3 hidden components
+    (f <- sgpls(prostate$x, prostate$y, K=3, eta=0.6, scale.x=FALSE))
+
+    # Print out coefficients
+    coef.f <- coef(f)
+    coef.f[coef.f!=0, ]
 }
 \keyword{models}
 \keyword{multivariate}

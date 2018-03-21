@@ -1,3 +1,11 @@
+2018-03-16  Valentin Todorov  <valentin.todorov@chello.at>
+    * 2.2-2
+    *
+    * NAMESPACE - import functions used from standard packages
+    *   like stats, graphics, grDevices
+    *
+    * NAMESPACE - register S3 classes 
+    *
 2013-08-02  Valentin Todorov  <valentin.todorov@chello.at>
     * 2.2-1
     *

@@ -1,3 +1,7 @@
+## VT::16.03.2018 - this will render the output independent
+##  from the version of the package
+suppressPackageStartupMessages(library(spls))
+
 library(spls)
 data(yeast)
 

@@ -48,25 +48,30 @@ The choices for \code{select} and \code{fit} are independent.
 \value{A \pkg{spls} object is returned.
 print, plot, predict, coef, ci.spls, coefplot.spls methods use this object.}
 \references{
-Chun H and Keles S (2010), "Sparse partial least squares
-for simultaneous dimension reduction and variable selection",
-\emph{Journal of the Royal Statistical Society - Series B}, Vol. 72, pp. 3--25. }
-\author{ Dongjun Chung, Hyonho Chun, and Sunduz Keles. }
+    Chun H and Keles S (2010), "Sparse partial least squares
+    for simultaneous dimension reduction and variable selection",
+    \emph{Journal of the Royal Statistical Society - Series B}, Vol. 72, pp. 3--25. 
+}
+\author{ 
+    Dongjun Chung, Hyonho Chun, and Sunduz Keles. 
+}
 \seealso{ \code{\link{print.spls}}, \code{\link{plot.spls}}, \code{\link{predict.spls}},
 \code{\link{coef.spls}}, \code{\link{ci.spls}}, and \code{\link{coefplot.spls}}. }
 \examples{
-data(yeast)
-# SPLS with eta=0.7 & 8 hidden components
-f <- spls( yeast$x, yeast$y, K=8, eta=0.7 )
-print(f)
-# Print out coefficients
-coef.f <- coef(f)
-coef.f[,1]
-# Coefficient path plot
-plot( f, yvar=1 )
-dev.new()
-# Coefficient plot of selected variables
-coefplot.spls( f, xvar=c(1:4) )
+    data(yeast)
+    # SPLS with eta=0.7 & 8 hidden components
+    (f <- spls(yeast$x, yeast$y, K=8, eta=0.7))
+
+    # Print out coefficients
+    coef.f <- coef(f)
+    coef.f[,1]
+
+    # Coefficient path plot
+    plot(f, yvar=1)
+    dev.new()
+
+    # Coefficient plot of selected variables
+    coefplot.spls(f, xvar=c(1:4))
 }
 \keyword{regression}
 \keyword{multivariate}

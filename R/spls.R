@@ -1,9 +1,5 @@
-
-# main SPLS fit
-
-"spls" <-
-function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
-        scale.x=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100, trace=FALSE )
+spls <- function(x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
+        scale.x=TRUE, scale.y=FALSE, eps=1e-4, maxstep=100, trace=FALSE)
 {
     # always required to input: x, y, K, plsmethod
     # x: matrix
@@ -143,13 +139,17 @@ function( x, y, K, eta, kappa=0.5, select="pls2", fit="simpls",
 
     # return objects
 
-    if ( !is.null(colnames(x)) ) { rownames(betahat) <- colnames(x) }
-    if ( q>1 & !is.null(colnames(y)) ) { colnames(betahat) <- colnames(y) }
+    if(!is.null(colnames(x))) {
+        rownames(betahat) <- colnames(x)
+    }
+    if(q > 1 & !is.null(colnames(y))) {
+        colnames(betahat) <- colnames(y)
+    }
 
-    object <- list( x=x, y=y, betahat=betahat, A=A, betamat=betamat, new2As=new2As,
+    object <- list(x=x, y=y, betahat=betahat, A=A, betamat=betamat, new2As=new2As,
                     mu=mu, meanx=meanx, normx=normx, normy=normy,
                     eta=eta, K=K, kappa=kappa, select=select, fit=fit,
-                    projection=pj )
+                    projection=pj)
     class(object) <- "spls"
     object
 }
